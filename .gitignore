@@ -99,8 +99,10 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+# My own files
 *.bkp
 *.dtmp
+*.txt
 
 # Chutzpah Test files
 _Chutzpah*
