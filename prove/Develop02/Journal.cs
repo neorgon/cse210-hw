@@ -1,7 +1,4 @@
-public class Entry
-{
-    public String _comment;
-}
+using System.IO;
 
 public class Journal
 {
@@ -9,7 +6,16 @@ public class Journal
 
     public void Write()
     {
-        _entries.Add(new Entry() { _comment = "new comment" });
+        Entry entry = new Entry();
+        DateTime date = entry.GetCurrentDate();
+        String promt = entry.GetPromt();
+
+        Console.WriteLine("");
+        Console.WriteLine(promt);
+        Console.Write("> ");
+        String comment = Console.ReadLine();
+
+        _entries.Add(new Entry() { _date = date, _promt = promt, _comment = comment });
     }
 
     public void Display()
@@ -26,11 +32,11 @@ public class Journal
 
     public void Save()
     {
-        using (StreamWriter outputFile = new StreamWriter("myJournal.txt"))
+        using (StreamWriter outputFile = new StreamWriter("myJournal.csv"))
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine(entry._comment);
+                outputFile.WriteLine(String.Join<String>(",", new List<String>(){ entry._date.ToString(), entry._promt, entry._comment }));
             }
         }
     }
@@ -38,10 +44,6 @@ public class Journal
     public void Load()
     {
         _entries.Clear();
-
-        foreach (String entry in System.IO.File.ReadAllLines("myJournal.txt"))
-        {
-            _entries.Add(new Entry() { _comment = entry});
-        }
+        _entries = File.ReadAllLines("myJournal.csv").Select(line => Entry.ConvertFromCSV(line)).ToList();
     }
 }
