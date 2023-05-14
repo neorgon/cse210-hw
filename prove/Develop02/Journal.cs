@@ -24,15 +24,28 @@ public class Journal
 
         foreach (Entry entry in _entries)
         {
-            Console.WriteLine(entry._comment);
+            Console.WriteLine("__________________________________");
+            Console.WriteLine($"date: {entry._date}");
+            Console.WriteLine($"promt: {entry._promt}");
+            Console.WriteLine($"/:/ {entry._comment} /:/");
         }
 
         Console.WriteLine("");
     }
 
+    private String getFileName()
+    {
+        Console.Write("Enter a file name: ");
+        String fileName = Console.ReadLine();
+
+        return fileName;
+    }
+
     public void Save()
     {
-        using (StreamWriter outputFile = new StreamWriter("myJournal.csv"))
+        String fileName = getFileName();
+
+        using (StreamWriter outputFile = new StreamWriter(fileName))
         {
             foreach (Entry entry in _entries)
             {
@@ -43,7 +56,9 @@ public class Journal
 
     public void Load()
     {
+        String fileName = getFileName();
+
         _entries.Clear();
-        _entries = File.ReadAllLines("myJournal.csv").Select(line => Entry.ConvertFromCSV(line)).ToList();
+        _entries = File.ReadAllLines(fileName).Select(line => Entry.ConvertFromCSV(line)).ToList();
     }
 }
