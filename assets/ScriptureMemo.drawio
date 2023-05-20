@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-20T23:22:27.297Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="v64xXRGHEjtY2YQct7Yw" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-20T23:29:41.840Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="vTGgPin32YhwuVAHrtwm" version="21.3.2" type="github">
   <diagram name="Page-1" id="Gh8qVHzcruYR-wcPv18W">
     <mxGraphModel dx="1365" dy="807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -40,7 +40,7 @@
         <mxCell id="MP391SbNTcv9dDORy_ao-24" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="MP391SbNTcv9dDORy_ao-22" vertex="1">
           <mxGeometry y="78" width="170" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="paN9LS17fSrUHQOILZcr-8" value="RenderWord()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-22">
+        <mxCell id="paN9LS17fSrUHQOILZcr-8" value="RenderWord(): string" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-22">
           <mxGeometry y="86" width="170" height="30" as="geometry" />
         </mxCell>
         <mxCell id="paN9LS17fSrUHQOILZcr-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1.018;exitY=0.231;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=1.1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="paN9LS17fSrUHQOILZcr-9">
@@ -73,10 +73,10 @@
         <mxCell id="MP391SbNTcv9dDORy_ao-31" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="MP391SbNTcv9dDORy_ao-28" vertex="1">
           <mxGeometry y="130" width="170" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="paN9LS17fSrUHQOILZcr-6" value="RenderText()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-28">
+        <mxCell id="paN9LS17fSrUHQOILZcr-6" value="RenderScripture(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-28">
           <mxGeometry y="138" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="paN9LS17fSrUHQOILZcr-7" value="HideRamdomly()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-28">
+        <mxCell id="paN9LS17fSrUHQOILZcr-7" value="HideRamdomly(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-28">
           <mxGeometry y="168" width="170" height="30" as="geometry" />
         </mxCell>
         <mxCell id="paN9LS17fSrUHQOILZcr-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="MP391SbNTcv9dDORy_ao-35" target="MP391SbNTcv9dDORy_ao-22">
@@ -101,11 +101,14 @@
         <mxCell id="MP391SbNTcv9dDORy_ao-38" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="MP391SbNTcv9dDORy_ao-35" vertex="1">
           <mxGeometry y="78" width="170" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="paN9LS17fSrUHQOILZcr-9" value="GetWords()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-35">
+        <mxCell id="paN9LS17fSrUHQOILZcr-9" value="GetWords(): string" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-35">
           <mxGeometry y="86" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="paN9LS17fSrUHQOILZcr-10" value="isAllHidden()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-35">
+        <mxCell id="paN9LS17fSrUHQOILZcr-10" value="isAllHidden(): bool" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-35">
           <mxGeometry y="116" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="paN9LS17fSrUHQOILZcr-11" value="&lt;h1&gt;Scripture Class&lt;/h1&gt;&lt;p&gt;Represented the scripture which the user wants to memorize. Its attributes are book, chapter and verses, and its behavior are about to show all scripture and every the user press enter key this class hidden randomly some words and show again until all words are hidden.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="190" height="200" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
