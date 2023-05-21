@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-20T23:29:41.840Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="vTGgPin32YhwuVAHrtwm" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-21T00:42:10.921Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="-FQgLE0loysuQiuY6wwB" version="21.3.2" type="github">
   <diagram name="Page-1" id="Gh8qVHzcruYR-wcPv18W">
     <mxGraphModel dx="1365" dy="807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -107,8 +107,14 @@
         <mxCell id="paN9LS17fSrUHQOILZcr-10" value="isAllHidden(): bool" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="MP391SbNTcv9dDORy_ao-35">
           <mxGeometry y="116" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="paN9LS17fSrUHQOILZcr-11" value="&lt;h1&gt;Scripture Class&lt;/h1&gt;&lt;p&gt;Represented the scripture which the user wants to memorize. Its attributes are book, chapter and verses, and its behavior are about to show all scripture and every the user press enter key this class hidden randomly some words and show again until all words are hidden.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="80" y="360" width="190" height="200" as="geometry" />
+        <mxCell id="paN9LS17fSrUHQOILZcr-11" value="&lt;h1&gt;Class Scripture&lt;/h1&gt;&lt;p&gt;Represented the scripture which the user wants to memorize. Its attributes are book, chapter and verses, and its behavior are about to show all scripture and every the user press enter key this class hidden randomly some words and show again until all words are hidden.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="321" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="paN9LS17fSrUHQOILZcr-12" value="&lt;h1&gt;Class Reference&lt;/h1&gt;&lt;p&gt;Represented the verses referenced in the scripture. Its attributes are verse number and a list of words and its attributes are get all words from this verse and verify if all words are hidden.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="paN9LS17fSrUHQOILZcr-14" value="&lt;h1&gt;Class Word&lt;/h1&gt;&lt;p&gt;Represented one the word which is a part of entire the verse referenced in the scripture. Its attributes are string element and if a word is or not hidden and its attribute is the render word as a string of letters or as a string of dashes.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="760" width="200" height="200" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
