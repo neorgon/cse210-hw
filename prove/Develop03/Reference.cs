@@ -11,13 +11,18 @@ public class Reference
         _word = new List<Word>();
         for (int i = 0; i < text.Length; i++)
         {
-            _word.Add(new Word(text[i]));
+            _word.Add(new Word(text[i], i));
         }
     }
 
-    public int getNumber()
+    public int getVerseNumber()
     {
         return _number;
+    }
+
+    public int getTotalWords()
+    {
+        return _word.Count;
     }
 
     public string getText()
@@ -25,5 +30,10 @@ public class Reference
         var text = new StringBuilder();
         _word.ForEach(word => text.Append(word.RenderWord() + " "));
         return text.ToString();
+    }
+
+    public void setHiddenWord(int positionToHidden)
+    {
+        _word[positionToHidden].setHidden();
     }
 }

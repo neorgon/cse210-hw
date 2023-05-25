@@ -17,15 +17,24 @@ public class Scripture
         _book = book;
         _chapter = chapter;
         _text = new List<Reference>();
-        for (int i = verseFrom; i <= verseTo; i++)
+        for (int verse = verseFrom; verse <= verseTo; verse++)
         {
-            _text.Add(new Reference(i, text[i - verseFrom].Split(' ')));
+            _text.Add(new Reference(verse, text[verse - verseFrom].Split(' ')));
         }
     }
 
     public void RenderScripture()
     {
-        Console.WriteLine($"{_book} {_chapter}: {_text[0].getNumber()}" + (_text.Count > 1 ? "-" + _text[_text.Count - 1].getNumber() : ""));
+        Console.Clear();
+        Console.WriteLine($"{_book} {_chapter}: {_text[0].getVerseNumber()}" + (_text.Count > 1 ? "-" + _text[_text.Count - 1].getVerseNumber() : ""));
         _text.ForEach(verse => Console.WriteLine(verse.getText()));
+    }
+
+    public void HideRandomly()
+    {
+        int totalWords = _text[0].getTotalWords();
+        Random hidden = new Random();
+        var hiddenPosition = hidden.Next(0, totalWords - 1);
+        _text[0].setHiddenWord(hiddenPosition);
     }
 }
