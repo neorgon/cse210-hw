@@ -3,6 +3,7 @@ public class Scripture
     private string _book;
     private int _chapter;
     private List<Reference> _text { get; set; }
+    private const int NUMBER_WORDS_TO_HIDDE = 3;
 
     public Scripture(string book, int chapter, int verse, string text)
     {
@@ -33,9 +34,23 @@ public class Scripture
     public void HideRandomly()
     {
         Random hidden = new Random();
+        List<int> randomNumbers = new List<int>();
+        int totalRequire = 0;
         var onlyDisplayWords = _text[0].getOnlyDisplayWords();
-        var hiddenPosition = hidden.Next(0, onlyDisplayWords.Count);
-        onlyDisplayWords[hiddenPosition].setHidden();
+        int hiddenPosition;
+
+        do
+        {
+            hiddenPosition = hidden.Next(0, onlyDisplayWords.Count);
+            if (!randomNumbers.Contains(hiddenPosition))
+            {
+                randomNumbers.Add(hiddenPosition);
+                totalRequire++;
+            }
+        }
+        while(totalRequire < NUMBER_WORDS_TO_HIDDE && onlyDisplayWords.Count > randomNumbers.Count);
+
+        randomNumbers.ForEach(position => onlyDisplayWords[position].setHidden());
     }
 
     public bool allWordIsHidden()
