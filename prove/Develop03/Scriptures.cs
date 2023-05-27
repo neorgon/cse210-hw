@@ -28,7 +28,7 @@ public class Scripture
     {
         Console.Clear();
         Console.WriteLine($"{_book} {_chapter}: {_text[0].getVerseNumber()}" + (_text.Count > 1 ? "-" + _text[_text.Count - 1].getVerseNumber() : ""));
-        _text.ForEach(verse => Console.WriteLine(verse.getText()));
+        _text.ForEach(verse => Console.WriteLine($"{verse.getVerseNumber} {verse.getText()}"));
     }
 
     public void HideRandomly()
