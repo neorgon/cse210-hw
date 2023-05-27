@@ -36,4 +36,9 @@ public class Reference
     {
         _word[positionToHidden].setHidden();
     }
+
+    public List<Word> getOnlyDisplayWords()
+    {
+        return _word.Where(word => word.isNotHidden() == false).ToList();
+    }
 }

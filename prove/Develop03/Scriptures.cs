@@ -32,9 +32,9 @@ public class Scripture
 
     public void HideRandomly()
     {
-        int totalWords = _text[0].getTotalWords();
         Random hidden = new Random();
-        var hiddenPosition = hidden.Next(0, totalWords - 1);
-        _text[0].setHiddenWord(hiddenPosition);
+        var onlyDisplayWords = _text[0].getOnlyDisplayWords();
+        var hiddenPosition = hidden.Next(0, onlyDisplayWords.Count);
+        onlyDisplayWords[hiddenPosition].setHidden();
     }
 }

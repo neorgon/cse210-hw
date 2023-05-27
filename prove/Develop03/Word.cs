@@ -24,4 +24,9 @@ public class Word
     {
         _isHidden = true;
     }
+
+    public bool isNotHidden()
+    {
+        return _isHidden;
+    }
 }
