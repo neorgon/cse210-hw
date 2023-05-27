@@ -14,6 +14,12 @@ class Program
             isQuit = Console.ReadLine();
             myScripture.HideRandomly();
         }
-        while (isQuit != "quit");
+        while (isQuit != "quit" && !myScripture.allWordIsHidden());
+        
+        if (myScripture.allWordIsHidden())
+        {
+            myScripture.RenderScripture();
+        }
+            
     }
 }
