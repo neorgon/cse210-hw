@@ -37,4 +37,9 @@ public class Scripture
         var hiddenPosition = hidden.Next(0, onlyDisplayWords.Count);
         onlyDisplayWords[hiddenPosition].setHidden();
     }
+
+    public bool allWordIsHidden()
+    {
+        return _text[0].getOnlyDisplayWords().Count == 0;
+    }
 }
