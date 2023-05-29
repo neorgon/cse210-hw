@@ -20,11 +20,6 @@ public class Reference
         return _number;
     }
 
-    public int getTotalWords()
-    {
-        return _word.Count;
-    }
-
     public string getText()
     {
         var text = new StringBuilder();
@@ -34,7 +29,8 @@ public class Reference
 
     public void setHiddenWord(int positionToHidden)
     {
-        _word[positionToHidden].setHidden();
+        int index = _word.FindIndex(word => word.getPosition() == positionToHidden);
+        _word[index].setHidden();
     }
 
     public List<Word> getOnlyDisplayWords()

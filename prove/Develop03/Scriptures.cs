@@ -28,33 +28,59 @@ public class Scripture
     {
         Console.Clear();
         Console.WriteLine($"{_book} {_chapter}: {_text[0].getVerseNumber()}" + (_text.Count > 1 ? "-" + _text[_text.Count - 1].getVerseNumber() : ""));
-        _text.ForEach(verse => Console.WriteLine($"{verse.getVerseNumber} {verse.getText()}"));
+        _text.ForEach(verse => Console.WriteLine($"{verse.getVerseNumber()} {verse.getText()}"));
     }
 
     public void HideRandomly()
     {
         Random hidden = new Random();
-        List<int> randomNumbers = new List<int>();
-        int totalRequire = 0;
-        var onlyDisplayWords = _text[0].getOnlyDisplayWords();
+        Random reference = new Random();
+        HashSet<Tuple<int, int>> randomPairs = new HashSet<Tuple<int, int>>();
+        int hiddenReference;
         int hiddenPosition;
+        var onlyDisplayWords = new List<Word>();
 
         do
         {
-            hiddenPosition = hidden.Next(0, onlyDisplayWords.Count);
-            if (!randomNumbers.Contains(hiddenPosition))
+            hiddenReference = reference.Next(0, _text.Count);
+            onlyDisplayWords = _text[hiddenReference].getOnlyDisplayWords();
+            if (onlyDisplayWords.Count != 0)
             {
-                randomNumbers.Add(hiddenPosition);
-                totalRequire++;
+                hiddenPosition = hidden.Next(0, onlyDisplayWords.Count);
+                randomPairs.Add(Tuple.Create(hiddenReference, onlyDisplayWords[hiddenPosition].getPosition()));
             }
         }
-        while(totalRequire < NUMBER_WORDS_TO_HIDDE && onlyDisplayWords.Count > randomNumbers.Count);
+        while(randomPairs.Count < NUMBER_WORDS_TO_HIDDE && randomPairs.Count < remainDisplayWords());
 
-        randomNumbers.ForEach(position => onlyDisplayWords[position].setHidden());
+        foreach (var pair in randomPairs)
+        {
+            _text[pair.Item1].setHiddenWord(pair.Item2);
+        }
+    }
+
+    private int remainDisplayWords()
+    {
+        int remainWords = 0;
+
+        foreach (var text in _text)
+            remainWords += text.getOnlyDisplayWords().Count;
+
+        return remainWords;
     }
 
     public bool allWordIsHidden()
     {
-        return _text[0].getOnlyDisplayWords().Count == 0;
+        bool allHidden = true;
+
+        foreach (var text in _text)
+        {
+            if (text.getOnlyDisplayWords().Count != 0)
+            {
+                allHidden = false;
+                break;
+            }
+        }
+
+        return allHidden;
     }
 }
