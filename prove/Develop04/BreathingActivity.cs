@@ -7,6 +7,7 @@ public class BreathingActivity : Activity
 
     public BreathingActivity(string wellcome, string ending, int duration, string description) : base(wellcome, ending, duration, description)
     {
+        
     }
 
     public void setMessages(string messageBreathingIn, string messageBreathinOut)
