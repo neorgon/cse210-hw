@@ -1,8 +1,7 @@
-public class ReflectionActivity : Activity
+public class ListingActivity : Activity
 {
-    private List<string> _reflectQuestions;
-
-    public ReflectionActivity(
+    List<string> _items;
+    public ListingActivity(
         string wellcome,
         string ending,
         int duration,
@@ -12,12 +11,12 @@ public class ReflectionActivity : Activity
     {
         setPrompts(prompts);
         setCountDown(countDown);
+        _items = new List<string>();
     }
 
-    public void setReflectQuestions(List<string> questions)
+    public void addNewItem(string item)
     {
-        _reflectQuestions = new List<string>();
-        questions.ForEach(question => _reflectQuestions.Add(question));
+        _items.Add(item);
     }
 
     public override void run()
