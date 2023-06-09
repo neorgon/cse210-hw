@@ -46,5 +46,15 @@ public abstract class Activity
         _countDown = countDown;
     }
 
+    public List<string> getPrompts()
+    {
+        return _prompts;
+    }
+
+    public int getCountDown()
+    {
+        return _countDown;
+    }
+
     public abstract void run();
 }
