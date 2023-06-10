@@ -13,31 +13,10 @@ public class BreathingActivity : Activity
         setPrompts(new List<string> {messageBreathingIn, messageBreathingOut});
     }
 
-    private void gettingReady()
-    {
-        Console.Write("Get ready...");
-        for (int i = 0; i < 5; i++)
-        {
-            Console.Write("|");
-            Thread.Sleep(500);
-            Console.Write("\b \b");
-            Console.Write("\\");
-            Thread.Sleep(500);
-            Console.Write("\b \b");
-            Console.Write("-");
-            Thread.Sleep(500);
-            Console.Write("\b \b");
-            Console.Write("/");
-            Thread.Sleep(500);
-            Console.Write("\b \b");
-        }
-    }
-
     public override void run()
     {
-        Console.Clear();
         displayWelcomeMessage();
-        gettingReady();
+        spinner();
         displayEndingMessage();
     }
 }

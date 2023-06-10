@@ -6,6 +6,7 @@ public abstract class Activity
     private string _description;
     private List<string> _prompts;
     private int _countDown;
+    private const int _longSpinner = 7;
 
     public Activity(string wellcome, string ending, string description)
     {
@@ -16,6 +17,7 @@ public abstract class Activity
 
     public void displayWelcomeMessage()
     {
+        Console.Clear();
         Console.WriteLine($"{_wellcomeMessage}");
         Console.WriteLine($"{_description}");
         Console.Write("How long in seconds, would you like for your session? ");
@@ -62,6 +64,17 @@ public abstract class Activity
     public int getCountDown()
     {
         return _countDown;
+    }
+
+    protected void spinner()
+    {
+        Console.Write("Get ready.");
+        for (int i = 0; i < _longSpinner; i++)
+        {
+            Console.Write(".");
+            Thread.Sleep(500);
+        }
+        Console.WriteLine();
     }
 
     public abstract void run();
