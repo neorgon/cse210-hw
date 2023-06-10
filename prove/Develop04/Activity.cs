@@ -20,13 +20,18 @@ public abstract class Activity
         Console.Clear();
         Console.WriteLine($"{_wellcomeMessage}");
         Console.WriteLine($"{_description}");
+    }
+
+    public void initializeSession()
+    {
         Console.Write("How long in seconds, would you like for your session? ");
-        var duration = Console.Read();
-        setDuration((int) duration);
+        int duration = Convert.ToInt32(Console.ReadLine());
+        setDuration(duration);
     }
 
     public void displayEndingMessage()
     {
+        Console.Clear();
         Console.WriteLine($"{_endingMessage}");
     }
 

@@ -13,10 +13,40 @@ public class BreathingActivity : Activity
         setPrompts(new List<string> {messageBreathingIn, messageBreathingOut});
     }
 
+    private void runSession()
+    {
+        var limit = getDuration();
+        var prompts = getPrompts();
+        
+        while (limit > 0)
+        {
+            Console.Write(prompts[0]);
+            for (int i = _durationBreathingIn; i > 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+                limit--;
+            }
+            Console.WriteLine();
+            Console.Write(prompts[1]);
+            for (int i = _durationBreathingOut; i > 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+                limit--;
+            }
+            Console.WriteLine();
+        }
+    }
+
     public override void run()
     {
         displayWelcomeMessage();
+        initializeSession();
         spinner();
+        runSession();
         displayEndingMessage();
     }
 }
