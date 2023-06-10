@@ -5,10 +5,9 @@ public class ReflectionActivity : Activity
     public ReflectionActivity(
         string wellcome,
         string ending,
-        int duration,
         string description,
         List<string> prompts,
-        int countDown) : base(wellcome, ending, duration, description)
+        int countDown) : base(wellcome, ending, description)
     {
         setPrompts(prompts);
         setCountDown(countDown);

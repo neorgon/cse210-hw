@@ -7,22 +7,30 @@ public abstract class Activity
     private List<string> _prompts;
     private int _countDown;
 
-    public Activity(string wellcome, string ending, int duration, string description)
+    public Activity(string wellcome, string ending, string description)
     {
         _wellcomeMessage = wellcome;
         _endingMessage = ending;
-        _duration = duration;
         _description = description;
     }
 
-    public string getWellcomeMessage()
+    public void displayWelcomeMessage()
     {
-        return _wellcomeMessage;
+        Console.WriteLine($"{_wellcomeMessage}");
+        Console.WriteLine($"{_description}");
+        Console.Write("How long in seconds, would you like for your session? ");
+        var duration = Console.Read();
+        setDuration((int) duration);
     }
 
-    public string getEndingMessage()
+    public void displayEndingMessage()
     {
-        return _endingMessage;
+        Console.WriteLine($"{_endingMessage}");
+    }
+
+    private void setDuration(int duration)
+    {
+        _duration = duration;
     }
 
     public int getDuration()

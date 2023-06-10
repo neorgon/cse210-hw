@@ -4,10 +4,9 @@ public class ListingActivity : Activity
     public ListingActivity(
         string wellcome,
         string ending,
-        int duration,
         string description,
         List<string> prompts,
-        int countDown) : base(wellcome, ending, duration, description)
+        int countDown) : base(wellcome, ending, description)
     {
         setPrompts(prompts);
         setCountDown(countDown);

@@ -1,27 +1,43 @@
 public class BreathingActivity : Activity
 {
-    private int _durationBreathingIn;
-    private int _durationBreathingOut;
+    private const int _durationBreathingIn = 4;
+    private const int _durationBreathingOut = 6;
 
     public BreathingActivity(
         string wellcome,
         string ending,
-        int duration,
         string description,
         string messageBreathingIn,
-        string messageBreathingOut) : base(wellcome, ending, duration, description)
+        string messageBreathingOut) : base(wellcome, ending, description)
     {
         setPrompts(new List<string> {messageBreathingIn, messageBreathingOut});
     }
 
-    public void setTimers(int durationBreathingIn, int durationBreathingOut)
+    private void gettingReady()
     {
-        _durationBreathingIn = durationBreathingIn;
-        _durationBreathingOut = durationBreathingOut;
+        Console.Write("Get ready...");
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write("|");
+            Thread.Sleep(500);
+            Console.Write("\b \b");
+            Console.Write("\\");
+            Thread.Sleep(500);
+            Console.Write("\b \b");
+            Console.Write("-");
+            Thread.Sleep(500);
+            Console.Write("\b \b");
+            Console.Write("/");
+            Thread.Sleep(500);
+            Console.Write("\b \b");
+        }
     }
 
     public override void run()
     {
-        throw new NotImplementedException();
+        Console.Clear();
+        displayWelcomeMessage();
+        gettingReady();
+        displayEndingMessage();
     }
 }
