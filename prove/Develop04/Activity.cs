@@ -1,16 +1,15 @@
 public abstract class Activity
 {
-    private string _wellcomeMessage;
+    private string _activityName;
     private string _endingMessage;
     private int _duration;
     private string _description;
     private List<string> _prompts;
-    private int _countDown;
-    private const int _longSpinner = 7;
+    private const int _longSpinner = 9;
 
-    public Activity(string wellcome, string ending, string description)
+    public Activity(string activityName, string ending, string description)
     {
-        _wellcomeMessage = wellcome;
+        _activityName = activityName;
         _endingMessage = ending;
         _description = description;
     }
@@ -18,7 +17,7 @@ public abstract class Activity
     public void displayWelcomeMessage()
     {
         Console.Clear();
-        Console.WriteLine($"{_wellcomeMessage}");
+        Console.WriteLine($"Wellcome to the {_activityName} activity.");
         Console.WriteLine($"{_description}");
     }
 
@@ -45,20 +44,10 @@ public abstract class Activity
         return _duration;
     }
 
-    public string getDescription()
-    {
-        return _description;
-    }
-
     public void setPrompts(List<string> prompts)
     {
         _prompts = new List<string>();
         prompts.ForEach(prompt => _prompts.Add(prompt));
-    }
-
-    public void setCountDown(int countDown)
-    {
-        _countDown = countDown;
     }
 
     public List<string> getPrompts()
@@ -66,21 +55,18 @@ public abstract class Activity
         return _prompts;
     }
 
-    public int getCountDown()
+    protected void spinner(string message, int countDown = _longSpinner)
     {
-        return _countDown;
-    }
-
-    protected void spinner()
-    {
-        Console.Write("Get ready.");
-        for (int i = 0; i < _longSpinner; i++)
+        Console.Write($"{message}");
+        for (int i = 0; i < countDown; i++)
         {
             Console.Write(".");
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
         }
         Console.WriteLine();
     }
 
     public abstract void run();
+
+    public abstract void runSession();
 }

@@ -13,7 +13,7 @@ public class BreathingActivity : Activity
         setPrompts(new List<string> {messageBreathingIn, messageBreathingOut});
     }
 
-    private void runSession()
+    public override void runSession()
     {
         var limit = getDuration();
         var prompts = getPrompts();
@@ -45,8 +45,9 @@ public class BreathingActivity : Activity
     {
         displayWelcomeMessage();
         initializeSession();
-        spinner();
+        spinner("Get ready");
         runSession();
         displayEndingMessage();
+        spinner("Back to the main menu");
     }
 }
