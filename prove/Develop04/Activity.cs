@@ -65,7 +65,15 @@ public abstract class Activity
         Console.WriteLine();
     }
 
-    public abstract void run();
+    public void run()
+    {
+        displayWelcomeMessage();
+        initializeSession();
+        spinner("Get ready");
+        runSession();
+        displayEndingMessage();
+        spinner("Back to the main menu", 5);
+    }
 
     public abstract void runSession();
 }

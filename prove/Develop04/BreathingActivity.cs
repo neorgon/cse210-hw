@@ -40,14 +40,4 @@ public class BreathingActivity : Activity
             Console.WriteLine();
         }
     }
-
-    public override void run()
-    {
-        displayWelcomeMessage();
-        initializeSession();
-        spinner("Get ready");
-        runSession();
-        displayEndingMessage();
-        spinner("Back to the main menu");
-    }
 }

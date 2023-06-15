@@ -43,14 +43,4 @@ public class ReflectionActivity : Activity
         Console.Write($"> {_reflectQuestions[selected]} ");
         spinner("", halfTime);
     }
-
-    public override void run()
-    {
-        displayWelcomeMessage();
-        initializeSession();
-        spinner("Get ready");
-        runSession();
-        displayEndingMessage();
-        spinner("Back to the main menu");
-    }
 }

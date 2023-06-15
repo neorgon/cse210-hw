@@ -33,8 +33,30 @@ class Program
                 "Who are some of your personal heroes?"
             }
         );
-        // breathing.run();
-        // reflection.run();
-        listing.run();
+        int option = 0;
+
+        while (option != 4)
+        {
+            Console.Clear();
+            Console.WriteLine("Menu Options:");
+            Console.WriteLine("\t 1. Start breathing activity");
+            Console.WriteLine("\t 2. Start reflection activity");
+            Console.WriteLine("\t 3. Start listing activity");
+            Console.WriteLine("\t 4. QUIT");
+            Console.Write("Select a choice from the menu: ");
+            option = Convert.ToInt32(Console.ReadLine());
+            switch(option)
+            {
+                case 1:
+                    breathing.run();
+                    break;
+                case 2:
+                    reflection.run();
+                    break;
+                case 3:
+                    listing.run();
+                    break;
+            }
+        }
     }
 }
