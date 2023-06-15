@@ -1,6 +1,5 @@
 public class ListingActivity : Activity
 {
-    List<string> _items;
     public ListingActivity(
         string wellcome,
         string ending,
@@ -8,21 +7,40 @@ public class ListingActivity : Activity
         List<string> prompts) : base(wellcome, ending, description)
     {
         setPrompts(prompts);
-        _items = new List<string>();
-    }
-
-    public void addNewItem(string item)
-    {
-        _items.Add(item);
     }
 
     public override void runSession()
     {
-        throw new NotImplementedException();
+        var random = new Random();
+        var prompts = getPrompts();
+        int selected = random.Next(prompts.Count);
+        int senteces = 0;
+
+        Console.Clear();
+        Console.WriteLine("List as many responses you can to the following prompt:\n\n");
+        Console.WriteLine($"\t===:: {prompts[selected]} ::===\n");
+        spinner("Steady", 3);
+        Console.WriteLine();
+        spinner("Ready", 5);
+        Console.WriteLine("Go!");
+        var delay = Task.Delay(TimeSpan.FromSeconds(getDuration()));
+        while (!delay.IsCompleted)
+        {
+            Console.Write("> ");
+            Console.ReadLine();
+            senteces++;
+        }
+        Console.WriteLine();
+        Console.WriteLine($"Great, you wrote {senteces} sentences.");
     }
 
     public override void run()
     {
-        throw new NotImplementedException();
+        displayWelcomeMessage();
+        initializeSession();
+        spinner("Get ready");
+        runSession();
+        displayEndingMessage();
+        spinner("Back to the main menu");
     }
 }

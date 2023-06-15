@@ -51,5 +51,6 @@ public class ReflectionActivity : Activity
         spinner("Get ready");
         runSession();
         displayEndingMessage();
+        spinner("Back to the main menu");
     }
 }

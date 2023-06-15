@@ -30,7 +30,6 @@ public abstract class Activity
 
     public void displayEndingMessage()
     {
-        Console.Clear();
         Console.WriteLine($"{_endingMessage}");
     }
 
