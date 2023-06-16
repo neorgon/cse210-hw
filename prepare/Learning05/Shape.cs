@@ -7,5 +7,10 @@ public abstract class Shape
         _color = color;
     }
 
+    public string GetColor()
+    {
+        return _color;
+    }
+
     public abstract double GetArea();
 }
