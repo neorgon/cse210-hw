@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-17T02:35:07.967Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="NYt4P_OwzNU3rj6MF59R" version="21.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-17T02:40:25.596Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="8UsLeecrUyMIaZinkIza" version="21.4.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1375" dy="807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -138,10 +138,10 @@
         <mxCell id="N5X9dsisBr9nZMHzFeyO-5" value="Goal(name, description, points)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="N5X9dsisBr9nZMHzFeyO-0">
           <mxGeometry y="112" width="200" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="N5X9dsisBr9nZMHzFeyO-6" value="SetGoal()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="N5X9dsisBr9nZMHzFeyO-0">
+        <mxCell id="N5X9dsisBr9nZMHzFeyO-6" value="RecordEvent()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="N5X9dsisBr9nZMHzFeyO-0">
           <mxGeometry y="138" width="200" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="N5X9dsisBr9nZMHzFeyO-8" value="IsDoneGoal() double" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="N5X9dsisBr9nZMHzFeyO-0">
+        <mxCell id="N5X9dsisBr9nZMHzFeyO-8" value="IsComplete()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="N5X9dsisBr9nZMHzFeyO-0">
           <mxGeometry y="164" width="200" height="26" as="geometry" />
         </mxCell>
         <mxCell id="N5X9dsisBr9nZMHzFeyO-7" value="DisplayStatusGoal()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="N5X9dsisBr9nZMHzFeyO-0">
