@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-18T01:11:23.447Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="BVmMh8BahBpMjN6O6U-3" version="21.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-18T01:23:35.564Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="O295a4QQI7WNu8moP3NX" version="21.4.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1375" dy="807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -110,24 +110,30 @@
           <mxGeometry y="164" width="140" height="26" as="geometry" />
         </mxCell>
         <mxCell id="jNyfPGp1qXoaeHs2CXoK-14" value="Event" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="600" y="80" width="200" height="140" as="geometry">
+          <mxGeometry x="600" y="80" width="200" height="190" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="jNyfPGp1qXoaeHs2CXoK-15" value="_goals List&lt;Goal&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
           <mxGeometry y="26" width="200" height="26" as="geometry" />
         </mxCell>
+        <mxCell id="jNyfPGp1qXoaeHs2CXoK-28" value="_totalPoints double" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
+          <mxGeometry y="52" width="200" height="26" as="geometry" />
+        </mxCell>
         <mxCell id="jNyfPGp1qXoaeHs2CXoK-18" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
-          <mxGeometry y="52" width="200" height="8" as="geometry" />
+          <mxGeometry y="78" width="200" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="jNyfPGp1qXoaeHs2CXoK-20" value="RecordEvent()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
-          <mxGeometry y="60" width="200" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="jNyfPGp1qXoaeHs2CXoK-25" value="SaveGoals()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
+        <mxCell id="jNyfPGp1qXoaeHs2CXoK-20" value="CreateGoal()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
           <mxGeometry y="86" width="200" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="jNyfPGp1qXoaeHs2CXoK-22" value="LoadGoals()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
+        <mxCell id="jNyfPGp1qXoaeHs2CXoK-29" value="RecordEvent()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
           <mxGeometry y="112" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="jNyfPGp1qXoaeHs2CXoK-25" value="SaveGoals()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
+          <mxGeometry y="138" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="jNyfPGp1qXoaeHs2CXoK-22" value="LoadGoals()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="jNyfPGp1qXoaeHs2CXoK-14">
+          <mxGeometry y="164" width="200" height="26" as="geometry" />
         </mxCell>
         <mxCell id="jNyfPGp1qXoaeHs2CXoK-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=open;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="N5X9dsisBr9nZMHzFeyO-3">
           <mxGeometry relative="1" as="geometry">
@@ -137,8 +143,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="jNyfPGp1qXoaeHs2CXoK-27" value="&lt;h1&gt;Heading&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="50" y="680" width="190" height="120" as="geometry" />
+        <mxCell id="jNyfPGp1qXoaeHs2CXoK-27" value="&lt;h1&gt;Eternal Quest&lt;/h1&gt;&lt;p&gt;Event class create and manage a list of Goal class.&lt;/p&gt;&lt;p&gt;Method CreateGoal call methods on base Goal class in order to create new goal.&lt;/p&gt;&lt;p&gt;Method RecordEvent call methods on derived from Goal class in order to register goal done or goal is complete event.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="50" y="680" width="270" height="400" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
