@@ -23,5 +23,20 @@ public abstract class Goal
         return _isDone;
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public double GetPoints()
+    {
+        return _points;
+    }
+
     public abstract void DisplayStatus();
 }
