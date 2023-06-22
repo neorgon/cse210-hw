@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        Event eternal = new Event();
+        eternal.CreateGoal(0, "simple event one", "testing event class", 100);
+        eternal.ListGoals();
     }
 }
