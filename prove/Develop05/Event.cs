@@ -1,3 +1,10 @@
+public enum Goals
+{
+    Simple,
+    Eternal,
+    Checklist
+}
+
 public class Event
 {
     List<Goal> _goals;
@@ -11,9 +18,12 @@ public class Event
         TotalPoints = 0;
     }
 
-    public void CreateGoal(int typeGoal, string name, string description, double points)
+    public void CreateGoal(Goals goalType, string name, string description, double points)
     {
-        _goals.Add(new Simple(name, description, points));
+        if (goalType == Goals.Simple)
+            _goals.Add(new Simple(name, description, points));
+        if (goalType == Goals.Eternal)
+            _goals.Add(new Eternal(name, description, points));
     }
 
     public void RecordEvent()
