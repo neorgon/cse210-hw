@@ -19,4 +19,9 @@ public class Simple : Goal
     {
         return $"{GetPoints().ToString()};{IsComplete().ToString()}";
     }
+
+    public override void LoadStatus(string status)
+    {
+        SetIsDone(Convert.ToBoolean(status));
+    }
 }

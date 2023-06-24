@@ -40,12 +40,29 @@ public class Event
         }
     }
 
-    public void LoadGoals()
-    {}
+    public void LoadGoals(string filename)
+    {
+        string[] lines = File.ReadAllLines(filename);
+        TotalPoints = Convert.ToDouble(lines[0]);
+
+        for (int i = 1; i < lines.Count(); i++)
+        {
+            string[] line = lines[i].Split(";");
+
+            CreateGoal((Goals)Enum.Parse(typeof(Goals), line[0]), line[1], line[2], Convert.ToDouble(line[3]));
+            if (line.Count() > 4)
+                _goals.Last().LoadStatus(line[4]);
+        }
+    }
 
     public void ListGoals()
     {
         Console.WriteLine($"Total points: {TotalPoints}");
         _goals.ForEach(goal => goal.DisplayStatus());
+    }
+
+    public void ClearGoals()
+    {
+        _goals.Clear();
     }
 }

@@ -38,7 +38,14 @@ public abstract class Goal
         return _points;
     }
 
+    public void SetIsDone(bool value)
+    {
+        _isDone = value;
+    }
+
     public abstract void DisplayStatus();
 
     public abstract string GetStatus();
+
+    public abstract void LoadStatus(string status);
 }

@@ -42,6 +42,14 @@ public class Checklist : Goal
 
     public override string GetStatus()
     {
-        return $"{GetPoints().ToString()};{_bonus.ToString()};{_repeat.ToString()};{_manyTimesIsDone.ToString()}";
+        return $"{GetPoints().ToString()};{_bonus.ToString()},{_repeat.ToString()},{_manyTimesIsDone.ToString()}";
+    }
+
+    public override void LoadStatus(string status)
+    {
+        string[] value = status.Split(",");
+        _bonus = Convert.ToDouble(value[0]);
+        _repeat = Convert.ToInt32(value[1]);
+        _manyTimesIsDone = Convert.ToInt32(value[2]);
     }
 }

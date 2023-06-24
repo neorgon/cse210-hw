@@ -18,4 +18,9 @@ public class Eternal : Goal
     {
         return $"{GetPoints().ToString()}";
     }
+
+    public override void LoadStatus(string status)
+    {
+        throw new NotImplementedException();
+    }
 }
