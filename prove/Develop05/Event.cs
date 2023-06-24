@@ -31,8 +31,14 @@ public class Event
     public void RecordEvent()
     {}
     
-    public void SaveGoals()
-    {}
+    public void SaveGoals(string filename)
+    {
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(TotalPoints.ToString());
+            _goals.ForEach(goal => outputFile.WriteLine($"{goal.GetType()};{goal.GetName()};{goal.GetDescription()};{goal.GetStatus()}"));
+        }
+    }
 
     public void LoadGoals()
     {}

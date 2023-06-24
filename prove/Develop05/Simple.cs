@@ -14,4 +14,9 @@ public class Simple : Goal
     {
         Console.WriteLine(IsComplete() ? "[X]" : "[ ]" + $" {GetName()} ({GetDescription()})");
     }
+
+    public override string GetStatus()
+    {
+        return $"{GetPoints().ToString()};{IsComplete().ToString()}";
+    }
 }

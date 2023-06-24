@@ -13,4 +13,9 @@ public class Eternal : Goal
     {
         Console.WriteLine($"[-] {GetName()} ({GetDescription()})");
     }
+
+    public override string GetStatus()
+    {
+        return $"{GetPoints().ToString()}";
+    }
 }

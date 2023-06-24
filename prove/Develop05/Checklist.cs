@@ -39,4 +39,9 @@ public class Checklist : Goal
     {
         Console.WriteLine(IsComplete() ? "[X]" : "[ ]" + $" {GetName()} {GetDescription()} -- Currently completed: {GetManyTimesIsDone()} / {GetRepeatGoal()}");
     }
+
+    public override string GetStatus()
+    {
+        return $"{GetPoints().ToString()};{_bonus.ToString()};{_repeat.ToString()};{_manyTimesIsDone.ToString()}";
+    }
 }

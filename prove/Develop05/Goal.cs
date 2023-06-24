@@ -39,4 +39,6 @@ public abstract class Goal
     }
 
     public abstract void DisplayStatus();
+
+    public abstract string GetStatus();
 }
