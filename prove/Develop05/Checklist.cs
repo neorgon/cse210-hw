@@ -21,23 +21,9 @@ public class Checklist : Goal
         return _manyTimesIsDone;
     }
 
-    public double SetGoalDone()
-    {
-        _manyTimesIsDone++;
-
-        return GetPoints();
-    }
-
-    public double SetGoalComplete()
-    {
-        UpdateGoal();
-
-        return _bonus;
-    }
-
     public override void DisplayStatus()
     {
-        Console.WriteLine(IsComplete() ? "[X]" : "[ ]" + $" {GetName()} {GetDescription()} -- Currently completed: {GetManyTimesIsDone()} / {GetRepeatGoal()}");
+        Console.WriteLine((IsComplete() ? "[X]" : "[ ]") + $" {GetName()} {GetDescription()} -- Currently completed: {GetManyTimesIsDone()} / {GetRepeatGoal()}");
     }
 
     public override string GetStatus()
@@ -51,5 +37,18 @@ public class Checklist : Goal
         _bonus = Convert.ToDouble(value[0]);
         _repeat = Convert.ToInt32(value[1]);
         _manyTimesIsDone = Convert.ToInt32(value[2]);
+    }
+
+    public override double SetDone()
+    {
+        _manyTimesIsDone++;
+
+        if (_manyTimesIsDone == _repeat)
+        {
+            UpdateGoal();
+            return GetPoints() + _bonus;
+        }
+
+        return GetPoints();
     }
 }

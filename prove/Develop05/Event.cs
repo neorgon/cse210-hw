@@ -28,8 +28,10 @@ public class Event
             _goals.Add(new Checklist(name, description, points, repeat, bonus));
     }
 
-    public void RecordEvent()
-    {}
+    public void RecordEvent(int goal)
+    {
+        TotalPoints += _goals[goal].SetDone();
+    }
     
     public void SaveGoals(string filename)
     {

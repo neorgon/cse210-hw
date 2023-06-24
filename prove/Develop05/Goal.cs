@@ -48,4 +48,6 @@ public abstract class Goal
     public abstract string GetStatus();
 
     public abstract void LoadStatus(string status);
+
+    public abstract double SetDone();
 }

@@ -4,11 +4,6 @@ public class Eternal : Goal
     {
     }
 
-    public double SetGoalDone()
-    {
-        return GetPoints();
-    }
-
     public override void DisplayStatus()
     {
         Console.WriteLine($"[-] {GetName()} ({GetDescription()})");
@@ -22,5 +17,10 @@ public class Eternal : Goal
     public override void LoadStatus(string status)
     {
         throw new NotImplementedException();
+    }
+
+    public override double SetDone()
+    {
+        return GetPoints();
     }
 }

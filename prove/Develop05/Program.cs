@@ -11,6 +11,14 @@ class Program
         eternal.CreateGoal(Goals.Eternal, "This is an eternal goal", "Dominus et Deus, secula secuolorum", 250);
         eternal.CreateGoal(Goals.Checklist, "This is an checklist goal", "Lorem ipsum dolor sit amet consectetur", 50, 3, 300);
         eternal.ListGoals();
+        Console.ReadLine();
+        eternal.RecordEvent(1);
+        eternal.RecordEvent(2);
+        eternal.RecordEvent(3);
+        eternal.RecordEvent(3);
+        eternal.RecordEvent(3);
+        Console.Clear();
+        eternal.ListGoals();
         eternal.SaveGoals("mygoals.txt");
         Console.ReadLine();
         Console.Clear();
