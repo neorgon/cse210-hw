@@ -11,12 +11,12 @@ public class Eternal : Goal
 
     public override string GetStatus()
     {
-        return $"{GetPoints().ToString()}";
+        return $"{GetPoints().ToString()};{IsComplete().ToString()}";
     }
 
     public override void LoadStatus(string status)
     {
-        throw new NotImplementedException();
+        SetIsDone(Convert.ToBoolean(status));
     }
 
     public override double SetDone()

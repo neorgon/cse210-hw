@@ -52,8 +52,7 @@ public class Event
             string[] line = lines[i].Split(";");
 
             CreateGoal((Goals)Enum.Parse(typeof(Goals), line[0]), line[1], line[2], Convert.ToDouble(line[3]));
-            if (line.Count() > 4)
-                _goals.Last().LoadStatus(line[4]);
+            _goals.Last().LoadStatus(line[4]);
         }
     }
 
@@ -66,5 +65,15 @@ public class Event
     public void ClearGoals()
     {
         _goals.Clear();
+    }
+
+    public List<Goal> GetOnlyNotComplete()
+    {
+        return _goals.Where(goal => goal.IsComplete() == false).ToList();
+    }
+
+    public List<Goal> GetGoals()
+    {
+        return _goals;
     }
 }

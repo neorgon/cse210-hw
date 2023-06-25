@@ -23,20 +23,24 @@ public class Checklist : Goal
 
     public override void DisplayStatus()
     {
-        Console.WriteLine((IsComplete() ? "[X]" : "[ ]") + $" {GetName()} {GetDescription()} -- Currently completed: {GetManyTimesIsDone()} / {GetRepeatGoal()}");
+        Console.WriteLine($"{(IsComplete() ? "[X]" : "[ ]")} {GetName()} ({GetDescription()}) -- Currently completed: {GetManyTimesIsDone()} / {GetRepeatGoal()}");
     }
 
     public override string GetStatus()
     {
-        return $"{GetPoints().ToString()};{_bonus.ToString()},{_repeat.ToString()},{_manyTimesIsDone.ToString()}";
+        return $"{GetPoints().ToString()};{IsComplete().ToString()},{_bonus.ToString()},{_repeat.ToString()},{_manyTimesIsDone.ToString()}";
     }
 
     public override void LoadStatus(string status)
     {
         string[] value = status.Split(",");
-        _bonus = Convert.ToDouble(value[0]);
-        _repeat = Convert.ToInt32(value[1]);
-        _manyTimesIsDone = Convert.ToInt32(value[2]);
+        SetIsDone(Convert.ToBoolean(value[0]));
+        if (value.Count() > 1)
+        {
+            _bonus = Convert.ToDouble(value[1]);
+            _repeat = Convert.ToInt32(value[2]);
+            _manyTimesIsDone = Convert.ToInt32(value[3]);
+        }
     }
 
     public override double SetDone()

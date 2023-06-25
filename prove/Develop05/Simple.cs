@@ -5,7 +5,7 @@ public class Simple : Goal
 
     public override void DisplayStatus()
     {
-        Console.WriteLine((IsComplete() ? "[X]" : "[ ]") + $" {GetName()} ({GetDescription()})");
+        Console.WriteLine($"{(IsComplete() ? "[X]" : "[ ]")} {GetName()} ({GetDescription()})");
     }
 
     public override string GetStatus()
