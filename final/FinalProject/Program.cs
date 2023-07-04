@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
+        IIngredient milk = new Concrete("Milk", Measures.Litros, 7);
+        IIngredient egg = new Concrete("Egg", Measures.Unit, 1);
     }
 }
