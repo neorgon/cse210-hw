@@ -11,6 +11,21 @@ public class Concrete : IIngredient
         _value = value;
     }
 
+    public void SetName(string name)
+    {
+        _name = name;
+    }
+
+    public void SetUnit(Measures measure)
+    {
+        _measure = measure;
+    }
+
+    public void SetValue(double value)
+    {
+        _value = value;
+    }
+
     public string GetName()
     {
         return _name;

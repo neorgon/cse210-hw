@@ -12,8 +12,8 @@ class Program
     static String[] _mainMenu = new string[5] {
         "1. View Restaurant menu.",
         "2. View Mise en Place.",
-        "3. Save on file.",
-        "4. Load from file.",
+        "3. Save menu on file.",
+        "4. Load menu from file.",
         "5. Quit."
     };
     static String[] _miseEnPlaceMenu = new string[] {
@@ -21,7 +21,9 @@ class Program
         "2. Drop Ingredient",
         "3. Edit Ingredient",
         "4. List Ingredients",
-        "5. Back to main menu"
+        "5. Save ingredients on file",
+        "6. Load ingredients from file",
+        "7. Back to main menu"
     };
 
     static int ShowError(int options, int choose = 0)
@@ -59,17 +61,77 @@ class Program
         Console.WriteLine("::======[New Ingredient]");
         Console.Write("Name: ");
         string name = Console.ReadLine();
-        int unit = 0;
-        foreach (string measure in Enum.GetNames(typeof(Measures)))
-        {
-            Console.WriteLine($"{++unit}. {measure}");
-        }
+        ShowMeassureList();
         Console.Write("Choose measure: ");
         int unitMeasure = Convert.ToInt32(Console.ReadLine());
         Console.Write("Cost per unit: ");
         double value = Convert.ToDouble(Console.ReadLine());
         _miseEnPlace.Add(new Concrete(name, (Measures)unitMeasure - 1, value));
         Console.Write("New ingredient is added. Press any [KEY] to return to menu.");
+        Console.ReadKey();
+    }
+
+    static void ShowMeassureList()
+    {
+        int unit = 0;
+        foreach (string measure in Enum.GetNames(typeof(Measures)))
+        {
+            Console.WriteLine($"{++unit}. {measure}");
+        }
+    }
+
+    static void ShowIngredientList()
+    {
+        int i = 0;
+        foreach (var ingredient in _miseEnPlace)
+        {
+            i++;
+            Console.WriteLine($"{i}. {ingredient.GetName()} {ingredient.GetUnit()} {ingredient.GetValue()}");
+        }
+    }
+
+    static void DropIngredient()
+    {
+        Console.Clear();
+        Console.WriteLine("::======[Drop Ingredients]");
+        if (_miseEnPlace.Count() > 0)
+        {
+            ShowIngredientList();
+            Console.Write("===> Choose number from ingredient will be dropped: ");
+            int drop = Convert.ToInt32(Console.ReadLine());
+            _miseEnPlace.RemoveAt(drop - 1);
+            Console.Write("Ingredient is dropped. Press any [KEY] to return to menu.");
+        }
+        else
+            Console.Write("Ingredient list is empty. Press any [KEY] to return to menu.");
+        Console.ReadKey();
+    }
+
+    static void EditIngredient()
+    {
+        Console.Clear();
+        Console.WriteLine("::======[Edit Ingredient]");
+        if (_miseEnPlace.Count() > 0)
+        {
+            ShowIngredientList();
+            Console.Write("===> Choose number from ingredient will be edited: ");
+            int edit = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+            Console.WriteLine($"Ingredient to edit: {_miseEnPlace[edit - 1].GetName()} {_miseEnPlace[edit - 1].GetUnit()} {_miseEnPlace[edit - 1].GetValue()}");
+            Console.Write("New name or empty if you do not want change name: ");
+            string name = Console.ReadLine();
+            ShowMeassureList();
+            Console.Write("Choose new measure or empty if you do not want change measure: ");
+            string unitMeasure = Console.ReadLine();
+            Console.Write("Cost per unit or empty if you do not want change cost per unit: ");
+            string value = Console.ReadLine();
+            _miseEnPlace[edit - 1].SetName(name == "" ? _miseEnPlace[edit - 1].GetName() : name);
+            _miseEnPlace[edit - 1].SetUnit(unitMeasure == "" ? _miseEnPlace[edit - 1].GetUnit() : (Measures)Convert.ToInt32(unitMeasure));
+            _miseEnPlace[edit - 1].SetValue(value == "" ? _miseEnPlace[edit - 1].GetValue() : Convert.ToDouble(value));
+            Console.Write("Ingredient is edited. Press any [KEY] to return to menu.");
+        }
+        else
+            Console.Write("Ingredient list is empty. Press any [KEY] to return to menu.");
         Console.ReadKey();
     }
 
@@ -84,30 +146,27 @@ class Program
 
     static void Main(string[] args)
     {
-        // IIngredient milk = new Concrete("Milk", Measures.Liters, 7);
-        // IIngredient egg = new Concrete("Egg", Measures.Unit, 1);
-        // IIngredient salt = new Concrete("Salt", Measures.Teasppon, 0.02);
-        // IIngredient sugar = new Concrete("Sugar", Measures.Teasppon, 0.02);
-        // IRecipe pancake = new Recipe("Pancakes");
-        // pancake.AddIngredient(milk);
-        // pancake.AddIngredient(egg);
-        // pancake.AddIngredient(salt);
-        // pancake.AddIngredient(sugar);
-        // Console.WriteLine($"{pancake.GetName()} Total value: {pancake.GetValueIngredients()}");
-        // pancake.GetIngredients().ForEach(ingredient => Console.WriteLine(ingredient.GetName()));
-        while (_option != 5)
+        while (_option != _mainMenu.Length)
         {
             _option = DisplayMenu(1, _mainMenu);
             switch (_option)
             {
                 case 2:
-                    while (_option != 5)
+                    while (_option != _miseEnPlaceMenu.Length)
                     {
                         _option = DisplayMenu(_option, _miseEnPlaceMenu);
                         switch (_option)
                         {
                             case 1:
                                 CreateIngredient();
+                                _option = 2;
+                                break;
+                            case 2:
+                                DropIngredient();
+                                _option = 2;
+                                break;
+                            case 3:
+                                EditIngredient();
                                 _option = 2;
                                 break;
                             case 4:
