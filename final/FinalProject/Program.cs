@@ -55,10 +55,21 @@ class Program
         return 0;
     }
 
-    static void CreateIngredient()
+    static void ShowTitle(string title)
     {
         Console.Clear();
-        Console.WriteLine("::======[New Ingredient]");
+        Console.WriteLine($"::======[{title}]");
+    }
+
+    static void ShowFooter()
+    {
+        Console.Write("Press any [KEY] to return to menu.");
+        Console.ReadKey();
+    }
+
+    static void CreateIngredient()
+    {
+        ShowTitle("New Ingredient");
         Console.Write("Name: ");
         string name = Console.ReadLine();
         ShowMeassureList();
@@ -67,8 +78,8 @@ class Program
         Console.Write("Cost per unit: ");
         double value = Convert.ToDouble(Console.ReadLine());
         _miseEnPlace.Add(new Concrete(name, (Measures)unitMeasure - 1, value));
-        Console.Write("New ingredient is added. Press any [KEY] to return to menu.");
-        Console.ReadKey();
+        Console.Write("New ingredient is added.");
+        ShowFooter();
     }
 
     static void ShowMeassureList()
@@ -92,25 +103,23 @@ class Program
 
     static void DropIngredient()
     {
-        Console.Clear();
-        Console.WriteLine("::======[Drop Ingredients]");
+        ShowTitle("Drop Ingredients");
         if (_miseEnPlace.Count() > 0)
         {
             ShowIngredientList();
             Console.Write("===> Choose number from ingredient will be dropped: ");
             int drop = Convert.ToInt32(Console.ReadLine());
             _miseEnPlace.RemoveAt(drop - 1);
-            Console.Write("Ingredient is dropped. Press any [KEY] to return to menu.");
+            Console.Write("Ingredient is dropped.");
         }
         else
-            Console.Write("Ingredient list is empty. Press any [KEY] to return to menu.");
-        Console.ReadKey();
+            Console.Write("Ingredient list is empty.");
+        ShowFooter();
     }
 
     static void EditIngredient()
     {
-        Console.Clear();
-        Console.WriteLine("::======[Edit Ingredient]");
+        ShowTitle("Edit Ingredient");
         if (_miseEnPlace.Count() > 0)
         {
             ShowIngredientList();
@@ -128,20 +137,49 @@ class Program
             _miseEnPlace[edit - 1].SetName(name == "" ? _miseEnPlace[edit - 1].GetName() : name);
             _miseEnPlace[edit - 1].SetUnit(unitMeasure == "" ? _miseEnPlace[edit - 1].GetUnit() : (Measures)Convert.ToInt32(unitMeasure));
             _miseEnPlace[edit - 1].SetValue(value == "" ? _miseEnPlace[edit - 1].GetValue() : Convert.ToDouble(value));
-            Console.Write("Ingredient is edited. Press any [KEY] to return to menu.");
+            Console.Write("Ingredient is edited.");
         }
         else
-            Console.Write("Ingredient list is empty. Press any [KEY] to return to menu.");
-        Console.ReadKey();
+            Console.Write("Ingredient list is empty.");
+        ShowFooter();
     }
 
     static void DisplayIngredients()
     {
-        Console.Clear();
-        Console.WriteLine("::======[List Ingredients]");
+        ShowTitle("List Ingredients");
         _miseEnPlace.ForEach(ingredient => Console.WriteLine($"{ingredient.GetName()} {ingredient.GetUnit()} {ingredient.GetValue()}"));
-        Console.Write("Press any [KEY] to return to menu.");
-        Console.ReadKey();
+        ShowFooter();
+    }
+
+    static void SaveToFile()
+    {
+        ShowTitle("Save ingredients into txt file");
+        Console.Write("Choose filename: ");
+        string filename = Console.ReadLine();
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            _miseEnPlace.ForEach(ingredient => outputFile.WriteLine($"{ingredient.GetName()};{ingredient.GetUnit()};{ingredient.GetValue()}"));
+        }
+        Console.WriteLine("File was save.");
+        ShowFooter();
+    }
+
+    static void LoadFromFile()
+    {
+        ShowTitle("Load ingredients from txt file");
+        Console.Write("Choose filename: ");
+        string filename = Console.ReadLine();
+        string[] lines = File.ReadAllLines(filename);
+        Console.Write("Do you override current Mise en Place? [Y/N]: ");
+        ConsoleKeyInfo overrideMiseEnPalce = Console.ReadKey();
+        if (overrideMiseEnPalce.KeyChar.ToString().ToUpper() != "Y")
+            _miseEnPlace.Clear();
+        foreach (string line in lines)
+        {
+            string[] ingredient = line.Split(";");
+            _miseEnPlace.Add(new Concrete(ingredient[0], Enum.TryParse<Measures>(ingredient[1], true, out Measures measure), Convert.ToDouble(ingredient[2])));
+        }
+        ShowFooter();
     }
 
     static void Main(string[] args)
