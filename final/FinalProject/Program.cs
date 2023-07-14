@@ -9,12 +9,10 @@ class Program
         "Restaurant Menu",
         "Mise en Place",
     };
-    static String[] _mainMenu = new string[5] {
+    static String[] _mainMenu = new string[] {
         "1. View Restaurant menu.",
         "2. View Mise en Place.",
-        "3. Save menu on file.",
-        "4. Load menu from file.",
-        "5. Quit."
+        "3. Quit."
     };
     static String[] _miseEnPlaceMenu = new string[] {
         "1. Create new Ingredient",
@@ -177,8 +175,9 @@ class Program
         foreach (string line in lines)
         {
             string[] ingredient = line.Split(";");
-            _miseEnPlace.Add(new Concrete(ingredient[0], Enum.TryParse<Measures>(ingredient[1], true, out Measures measure), Convert.ToDouble(ingredient[2])));
+            _miseEnPlace.Add(new Concrete(ingredient[0], (Measures)Enum.Parse(typeof(Measures), ingredient[1], true), Convert.ToDouble(ingredient[2])));
         }
+        Console.WriteLine();
         ShowFooter();
     }
 
@@ -209,6 +208,14 @@ class Program
                                 break;
                             case 4:
                                 DisplayIngredients();
+                                _option = 2;
+                                break;
+                            case 5:
+                                SaveToFile();
+                                _option = 2;
+                                break;
+                            case 6:
+                                LoadFromFile();
                                 _option = 2;
                                 break;
                         }
