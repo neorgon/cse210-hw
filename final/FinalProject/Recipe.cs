@@ -1,15 +1,16 @@
 public class Recipe : IRecipe
 {
     private string _name;
-    private List<IIngredient> _ingredients;
+    // private List<IIngredient> _ingredients;
+    private List<Tuple<IIngredient, int>> _ingredients;
 
     public Recipe(string name)
     {
         _name = name;
-        _ingredients = new List<IIngredient>();
+        _ingredients = new List<Tuple<IIngredient, int>>();
     }
 
-    public void AddIngredient(IIngredient ingredient)
+    public void AddIngredient(Tuple<IIngredient, int> ingredient)
     {
         _ingredients.Add(ingredient);
     }
@@ -19,13 +20,20 @@ public class Recipe : IRecipe
         return _name;
     }
 
-    public List<IIngredient> GetIngredients()
+    public List<Tuple<IIngredient, int>> GetIngredients()
     {
         return _ingredients;
     }
 
     public double GetValueIngredients()
     {
-        return _ingredients.Sum(ingredient => ingredient.GetValue());
+        double total = 0;
+
+        foreach (var ingredient in _ingredients)
+        {
+            total += ingredient.Item1.GetValue() * ingredient.Item2;
+        }
+
+        return total;
     }
 }

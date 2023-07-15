@@ -4,6 +4,7 @@ class Program
 {
     static int _option = 0;
     static List<IIngredient> _miseEnPlace = new List<IIngredient>();
+    static List<IRecipe> _menu = new List<IRecipe>();
     static String[] _menuName = new string[] {
         "Main Menu",
         "Restaurant Menu",
@@ -12,16 +13,25 @@ class Program
     static String[] _mainMenu = new string[] {
         "1. View Restaurant menu.",
         "2. View Mise en Place.",
-        "3. Quit."
+        "3. Register sold.",
+        "4. Quit."
+    };
+    static String[] _restaurantMenu = new string[] {
+        "1. Create new recipe.",
+        "2. Drop recipe.",
+        "3. List recipes.",
+        "4. Save recipes on file.",
+        "5. Load recipes from file.",
+        "6. Back to main menu."
     };
     static String[] _miseEnPlaceMenu = new string[] {
-        "1. Create new Ingredient",
-        "2. Drop Ingredient",
-        "3. Edit Ingredient",
-        "4. List Ingredients",
-        "5. Save ingredients on file",
-        "6. Load ingredients from file",
-        "7. Back to main menu"
+        "1. Create new Ingredient.",
+        "2. Drop Ingredient.",
+        "3. Edit Ingredient.",
+        "4. List Ingredients.",
+        "5. Save ingredients on file.",
+        "6. Load ingredients from file.",
+        "7. Back to main menu."
     };
 
     static int ShowError(int options, int choose = 0)
@@ -63,6 +73,32 @@ class Program
     {
         Console.Write("Press any [KEY] to return to menu.");
         Console.ReadKey();
+    }
+
+    static void CreateRecipe()
+    {
+        ShowTitle("New Recipe");
+        Console.WriteLine("Name to the recipe: ");
+        string name = Console.ReadLine();
+        _menu.Add(new Recipe(name));
+        string ingredient = "";
+        Console.WriteLine("<< Choose ingredientes or [quit] as a ingredient or [0] cero as quantity >>");
+        ShowIngredientList();
+        while (ingredient.ToLower() != "quit")
+        {
+            Console.Write("Ingrediente: ");
+            ingredient = Console.ReadLine();
+            Console.Write("Quantity: ");
+            string quantity = Console.ReadLine();
+            if (ingredient.ToLower() != "quit" && quantity != "0")
+            {
+                _menu.Last().AddIngredient(new Tuple<IIngredient, int>(_miseEnPlace[Convert.ToInt32(ingredient)], Convert.ToInt32(quantity)));
+                Console.WriteLine("Ingredient was added. Press any [KEY] to continue.");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+        ShowFooter();
     }
 
     static void CreateIngredient()
@@ -188,6 +224,20 @@ class Program
             _option = DisplayMenu(1, _mainMenu);
             switch (_option)
             {
+                case 1:
+                    while (_option != _restaurantMenu.Length)
+                    {
+                        _option = DisplayMenu(_option, _restaurantMenu);
+                        switch (_option)
+                        {
+                            case 1:
+                                CreateRecipe();
+                                _option = 1;
+                                break;
+                        }
+                    }
+                    _option = 0;
+                    break;
                 case 2:
                     while (_option != _miseEnPlaceMenu.Length)
                     {

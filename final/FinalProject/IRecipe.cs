@@ -1,7 +1,7 @@
 public interface IRecipe
 {
-    void AddIngredient(IIngredient ingredient);
+    void AddIngredient(Tuple<IIngredient, int> ingredient);
     string GetName();
-    List<IIngredient> GetIngredients();
+    List<Tuple<IIngredient, int>> GetIngredients();
     double GetValueIngredients();
 }
