@@ -95,9 +95,33 @@ class Program
                 _menu.Last().AddIngredient(new Tuple<IIngredient, int>(_miseEnPlace[Convert.ToInt32(ingredient)], Convert.ToInt32(quantity)));
                 Console.WriteLine("Ingredient was added. Press any [KEY] to continue.");
                 Console.ReadKey();
-                Console.Clear();
             }
         }
+        ShowFooter();
+    }
+
+    static void ShowRecipes()
+    {
+        ShowTitle("Menu List");
+        _menu.ForEach(recipe => Console.WriteLine($"- {recipe.GetName()} {recipe.GetValueIngredients()}"));
+        ShowFooter();
+    }
+
+    static void DropRecipe()
+    {
+        ShowTitle("Drop Recipe");
+        if (_menu.Count() > 0)
+        {
+            int r = 0;
+            foreach (var recipe in _menu)
+                Console.WriteLine($"{r++}. {recipe.GetName()}");
+            Console.Write("===> Choose recipe to remove from the list: ");
+            int toRemove = Convert.ToInt32(Console.ReadLine());
+            _menu.RemoveAt(toRemove - 1);
+            Console.WriteLine("Recipe is dropped.");
+        }
+        else
+            Console.WriteLine("Menu list is empty");
         ShowFooter();
     }
 
@@ -144,10 +168,10 @@ class Program
             Console.Write("===> Choose number from ingredient will be dropped: ");
             int drop = Convert.ToInt32(Console.ReadLine());
             _miseEnPlace.RemoveAt(drop - 1);
-            Console.Write("Ingredient is dropped.");
+            Console.WriteLine("Ingredient is dropped.");
         }
         else
-            Console.Write("Ingredient list is empty.");
+            Console.WriteLine("Ingredient list is empty.");
         ShowFooter();
     }
 
@@ -232,6 +256,14 @@ class Program
                         {
                             case 1:
                                 CreateRecipe();
+                                _option = 1;
+                                break;
+                            case 2:
+                                DropRecipe();
+                                _option = 1;
+                                break;
+                            case 3:
+                                ShowRecipes();
                                 _option = 1;
                                 break;
                         }
