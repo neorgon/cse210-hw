@@ -92,7 +92,7 @@ class Program
             string quantity = Console.ReadLine();
             if (ingredient.ToLower() != "quit" && quantity != "0")
             {
-                _menu.Last().AddIngredient(new Tuple<IIngredient, int>(_miseEnPlace[Convert.ToInt32(ingredient)], Convert.ToInt32(quantity)));
+                _menu.Last().AddIngredient(new Tuple<IIngredient, int>(_miseEnPlace[Convert.ToInt32(ingredient) - 1], Convert.ToInt32(quantity)));
                 Console.WriteLine("Ingredient was added. Press any [KEY] to continue.");
                 Console.ReadKey();
             }
@@ -103,7 +103,15 @@ class Program
     static void ShowRecipes()
     {
         ShowTitle("Menu List");
-        _menu.ForEach(recipe => Console.WriteLine($"- {recipe.GetName()} {recipe.GetValueIngredients()}"));
+        if (_menu.Count() > 0)
+        {
+            _menu.ForEach(recipe => {
+                Console.WriteLine($"- {recipe.GetName()} Total cost: ${recipe.GetValueIngredients()}");
+                recipe.GetIngredients().ForEach(ingredient => Console.WriteLine($"\t {ingredient.Item1.GetName()} value: ${ingredient.Item1.GetValue()} quantity: {ingredient.Item2}"));
+            });
+        }
+        else
+            Console.WriteLine("Menu list is empty");
         ShowFooter();
     }
 
