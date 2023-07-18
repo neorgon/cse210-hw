@@ -13,8 +13,7 @@ class Program
     static String[] _mainMenu = new string[] {
         "1. View Restaurant menu.",
         "2. View Mise en Place.",
-        "3. Register sold.",
-        "4. Quit."
+        "3. Quit."
     };
     static String[] _restaurantMenu = new string[] {
         "1. Create new recipe.",
@@ -122,7 +121,7 @@ class Program
         {
             int r = 0;
             foreach (var recipe in _menu)
-                Console.WriteLine($"{r++}. {recipe.GetName()}");
+                Console.WriteLine($"{++r}. {recipe.GetName()}");
             Console.Write("===> Choose recipe to remove from the list: ");
             int toRemove = Convert.ToInt32(Console.ReadLine());
             _menu.RemoveAt(toRemove - 1);
@@ -133,6 +132,47 @@ class Program
         ShowFooter();
     }
 
+    static void SaveRecipeToFile()
+    {
+        ShowTitle("Save recipe list into txt file");
+        Console.Write("Choose filename: ");
+        string filename = Console.ReadLine();
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            _menu.ForEach(recipe => {
+                string recipeLine = $"{recipe.GetName()};{recipe.GetValueIngredients()}";
+                recipe.GetIngredients().ForEach(ingredient => recipeLine += $";{ingredient.Item1.GetName()}:{ingredient.Item1.GetUnit()}:{ingredient.Item1.GetValue()}:{ingredient.Item2}");
+                outputFile.WriteLine(recipeLine);
+            });
+        }
+        Console.WriteLine("File was save.");
+        ShowFooter();
+    }
+
+    static void LoadRecipeFromFile()
+    {
+        ShowTitle("Load recipe list from txt file");
+        Console.Write("Choose filename: ");
+        string filename = Console.ReadLine();
+        string[] recipes = File.ReadAllLines(filename);
+        Console.Write("Do you override current Menu? [Y/N]: ");
+        ConsoleKeyInfo overwriteMenu = Console.ReadKey();
+        if (overwriteMenu.KeyChar.ToString().ToUpper() != "Y")
+            _menu.Clear();
+        foreach (string recipe in recipes)
+        {
+            string[] data = recipe.Split(";");
+            _menu.Add(new Recipe(data[0]));
+            for (int i = 2; i < data.Count(); i++)
+            {
+                string[] ingredient = data[i].Split(":");
+                _menu.Last().AddIngredient(new Tuple<IIngredient, int>(new Concrete(ingredient[0], (Measures)Enum.Parse(typeof(Measures), ingredient[1], true), Convert.ToDouble(ingredient[2])), Convert.ToInt32(ingredient[3])));
+            }
+        }
+        Console.WriteLine();
+        ShowFooter();
+    }
+    
     static void CreateIngredient()
     {
         ShowTitle("New Ingredient");
@@ -237,8 +277,8 @@ class Program
         string filename = Console.ReadLine();
         string[] lines = File.ReadAllLines(filename);
         Console.Write("Do you override current Mise en Place? [Y/N]: ");
-        ConsoleKeyInfo overrideMiseEnPalce = Console.ReadKey();
-        if (overrideMiseEnPalce.KeyChar.ToString().ToUpper() != "Y")
+        ConsoleKeyInfo overwriteMiseEnPalce = Console.ReadKey();
+        if (overwriteMiseEnPalce.KeyChar.ToString().ToUpper() != "Y")
             _miseEnPlace.Clear();
         foreach (string line in lines)
         {
@@ -274,7 +314,14 @@ class Program
                                 ShowRecipes();
                                 _option = 1;
                                 break;
-                        }
+                            case 4:
+                                SaveRecipeToFile();
+                                _option = 1;
+                                break;
+                            case 5:
+                                LoadRecipeFromFile();
+                                _option = 1;
+                                break;                        }
                     }
                     _option = 0;
                     break;
